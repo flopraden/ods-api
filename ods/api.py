@@ -1,7 +1,7 @@
 import subprocess
 import re
 import logging
-from util import calc_keyid,calc_ds
+from .util import calc_keyid,calc_ds
 import sys
 import time
 import os
@@ -171,7 +171,7 @@ def seen_ds(domain,ckaid,configfile, **kwargs):
     # Get key list
     (errno,output)=subprocess.getstatusoutput(ods + ' key ds-seen --zone %s --cka_id %x' % (domain,ckaid))
     if errno != 0:
-        logger.critical("KSMUTIL ERROR %d: %s",errno,output)
+        logger.error("KSMUTIL ERROR %d: %s",errno,output)
     return (errno,output)
 
 
