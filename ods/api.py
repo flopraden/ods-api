@@ -195,12 +195,12 @@ def del_key(ods_path,configfile,domain,dry_run=False,**kwargs):
         ods_param=' --zone {0!s} --tag {1:d}'.format(domain,kwargs['tag'])
     else:
         logger.error("no ckaid or tag : could not delete key for domain %s",domain)
-    if 'keep-key' in kwargs:
+    if 'keep_key' in kwargs and kwargs['keep_key']:
         ods_param=' --no-hsm' + ods_param
     
     ods_param=' key delete' + ods_param
 
-    if 'force' in kwargs:
+    if 'force' in kwargs and kwargs['force']:
         ods_param=' -F' + ods_param
 
     ods_cmdline=ods +  ods_param
